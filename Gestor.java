@@ -7,7 +7,7 @@ public class Gestor {
         // ================================
         // Crea un método llamado que muestre un mensaje de bienvenida al programa.
         // No necesita devolver nada, solo imprimir por consola.
-        System.out.println("Ejercicio 1");
+
         bienvenida("Jose");
         // Tu código aquí ↓
 
@@ -63,7 +63,8 @@ public class Gestor {
         // Muestra el resultado en consola.
 
         // Tu código aquí ↓
-
+        double porcentaje = total(10, 7);
+        System.out.println("Porcentaje de avance: " + porcentaje + "%");
         // ================================
         // EJERCICIO 7: Sobrecarga
         // ================================
@@ -73,6 +74,8 @@ public class Gestor {
         // {usuario} completaste {numero} de tareas"
         // que muestre un resumen personalizado.
         // Llama a ambos desde main.
+        nombrea();
+        saludo("Jose", 2);
 
         // Tu código aquí ↓
 
@@ -113,7 +116,7 @@ public class Gestor {
         System.out.println("Ejercicio 3");
         int horas = minutos / 60;
         int minutosRestantes = minutos % 60;
-        System.out.println("150 minutos " + "son " + horas + " horas " + "y " + minutosRestantes + " minutos");
+        System.out.println(minutos + "minutos" + "son " + horas + " horas " + "y " + minutosRestantes + " minutos");
 
     }
 
@@ -137,10 +140,35 @@ public class Gestor {
             return "⏳ Pendiente";
         }
     }
+
     // ================================
     // EJERCICIO 6: Productividad
     // ================================
     // Crea un método que reciba el número total de tareas y las completadas
     // y devuelva el porcentaje de avance (por ejemplo, 70.0 si 7/10).
     // Muestra el resultado en consola.
+    public static double total(int tareas, int completadas) {
+        System.out.println("Ejercicio 6");
+        return (completadas * 100.0) / tareas;
+
+    }
+
+    // ================================
+    // EJERCICIO 7: Sobrecarga
+    // ================================
+    // Crea dos métodos con el mismo nombre:
+    // - uno sin parámetros, que muestre un mensaje genérico (ejemplo: "Hola crack";
+    // - otro con parámetros (nombre de usuario, número de tareas completadas) "Hola
+    // {usuario} completaste {numero} de tareas"
+    // que muestre un resumen personalizado.
+    // Llama a ambos desde main.
+    public static void nombrea() {
+        System.out.println("Hola crack");
+
+    }
+
+    public static void saludo(String usuario, int tareasCompletadas) {
+        System.out.println("Hola " + usuario + ", completaste " + tareasCompletadas + " tareas");
+    }
+
 }
