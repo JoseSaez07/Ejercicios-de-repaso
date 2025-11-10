@@ -24,7 +24,7 @@ public class Diadelasemana {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Diadelasemana producto = new Diadelasemana();
-        System.out.print("Dime un numero ");
+        System.out.print("Dime un numero del 1 al 7 ");
         int numeroValor = sc.nextInt();
         String resultado = producto.diaSemana(numeroValor);
         System.out.println(resultado);
