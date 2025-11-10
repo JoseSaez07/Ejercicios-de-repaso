@@ -45,6 +45,13 @@ public class Hola {
         // Recorre el array 'cartel' y compara cartel[i].getNombre()
         // con 'nombreBuscado' usando equalsIgnoreCase.
         // Si coincide, devuelve i. Si terminas el bucle sin encontrarlo, devuelve -1.
+        System.out.println("Ejercicio 1");
+        for (int i = 0; i < cartel.length; i++) {
+            if (cartel[i].getNombre().equalsIgnoreCase(nombreBuscado)) {
+                return i;
+            }
+
+        }
         return -1;
     }
 
@@ -59,7 +66,8 @@ public class Hola {
         // TODO:
         // Devuelve true si indiceDe(cartel, nombreBuscado) es distinto de -1.
         // En caso contrario, false.
-        return false;
+        System.out.println("Ejercicio 2");
+        return indiceDe(cartel, nombreBuscado) != -1;
     }
 
     /**
