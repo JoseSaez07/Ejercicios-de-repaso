@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 /**
@@ -32,9 +31,8 @@ public class RellenarArray {
      */
     public static String[] crearArrayFrutas(Scanner scanner) {
         String[] frutas = new String[5];
-        System.out.println("Introduce 5 frutas");
         for (int i = 0; i < frutas.length; i++) {
-            System.out.println("Fruta" + (i + 1) + ":");
+            System.out.println("Dime los nombres de la fruta: " + (i + 1));
             frutas[i] = scanner.nextLine();
         }
         return frutas;
@@ -47,9 +45,9 @@ public class RellenarArray {
      *               a mostrar.
      */
     public static void mostrarArrayFrutas(String[] frutas) {
-        for (String resultados : frutas) {
-            System.out.println("Fruta " + resultados);
-
+        System.out.println("Tus frutas son: ");
+        for (int i = 0; i < frutas.length; i++) {
+            System.out.println((i + 1) + " Fruta " + frutas[i]);
         }
 
     }

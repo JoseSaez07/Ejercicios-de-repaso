@@ -1,69 +1,165 @@
-/**
- * La clase {@code IntroduccionArrays} sirve como ejemplo básico para introducir
- * el uso de <b>arrays unidimensionales</b> en Java.
- * <p>
- * En este ejemplo se muestra cómo:
- * <ul>
- * <li>Declarar y crear un array de tipo {@code int}.</li>
- * <li>Asignar valores a cada elemento del array.</li>
- * <li>Pasar un array como argumento a un método.</li>
- * <li>Recorrer y mostrar su contenido por pantalla.</li>
- * </ul>
- * </p>
- *
- * <p>
- * El programa imprime las temperaturas máximas registradas durante una semana.
- * </p>
- *
- * @author Iván Corrales
- * @version 12/10/2025
- */
+
 public class Resultadosatleti {
 
     /**
-     * Muestra por consola la temperatura máxima correspondiente a cada día de la
-     * semana.
-     * <p>
-     * Ejemplo de salida esperada:
-     * </p>
-     * 
-     * <pre>
-     * Lunes: 22º
-     * Martes: 25º
-     * Miércoles: 24º
-     * ...
-     * Domingo: 18º
-     * </pre>
-     *
-     * @param temperaturas array de enteros que contiene las temperaturas máximas
-     *                     correspondientes a los días de la semana, en orden.
-     *                     Debe tener exactamente 7 elementos.
+     * Representa un partido con rival y goles a favor/en contra.
      */
-    public void mostrarTemperaturas(int[] temperaturas) {
-        String[] dias = { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo" };
-        for (int i = 0; i < temperaturas.length; i++) {
-            System.out.println(dias[i] + ":" + temperaturas[i]);
+    static class Partido {
+        private final String rival;
+        private final int golesMarcados; // a favor
+        private final int golesRecibidos; // en contra
+
+        /**
+         * Crea un nuevo partido.
+         *
+         * @param rival          nombre del equipo rival
+         * @param golesMarcados  goles a favor del Atlético
+         * @param golesRecibidos goles en contra del Atlético
+         */
+        public Partido(String rival, int golesMarcados, int golesRecibidos) {
+            this.rival = rival;
+            this.golesMarcados = golesMarcados;
+            this.golesRecibidos = golesRecibidos;
         }
+
+        /** @return rival */
+        public String getRival() {
+            return rival;
+        }
+
+        /** @return goles a favor */
+        public int getGolesMarcados() {
+            return golesMarcados;
+        }
+
+        /** @return goles en contra */
+        public int getGolesRecibidos() {
+            return golesRecibidos;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("vs %s (%d-%d)", rival, golesMarcados, golesRecibidos);
+        }
+    }
+
+    // ---------------------------------------------------------------------
+    // MÉTODOS A IMPLEMENTAR (como en el ejercicio de notas)
+    // ---------------------------------------------------------------------
+
+    /**
+     * Calcula la media aritmética de los goles MARCADOS por partido.
+     *
+     * @param temporada array de partidos (no nulo ni vacío)
+     * @return media de goles marcados
+     */
+    public static double mediaGolesMarcados(Partido[] temporada) {
+        // TODO:
+        // 1. Inicializa una variable suma a 0.
+        // 2. Recorre el array con un for-each y suma getGolesMarcados().
+        // 3. Devuelve suma / temporada.length (como double).
+        int suma = 0;
+        for (int i = 0; i < temporada.length; i++) {
+            suma += temporada[i].getGolesMarcados();
+        }
+        return (double) suma / temporada.length;
+    }
+
+    /**
+     * Devuelve el partido con MÁS goles marcados.
+     *
+     * @param temporada array de partidos (no nulo ni vacío)
+     * @return partido con el máximo de goles a favor
+     */
+    public static Partido partidoMasGolesMarcados(Partido[] temporada) {
+        Partido mejor = temporada[0];
+        for (int i = 1; i < temporada.length; i++) {
+            if (temporada[i].getGolesMarcados() > mejor.getGolesMarcados())
+                mejor = temporada[i];
+        }
+        return mejor;
+    }
+
+    /**
+     * Devuelve el partido con MENOS goles marcados.
+     *
+     * @param temporada array de partidos (no nulo ni vacío)
+     * @return partido con el mínimo de goles a favor
+     */
+    public static Partido partidoMenosGolesMarcados(Partido[] temporada) {
+        Partido peor = temporada[0];
+        for (int i = 1; i < temporada.length; i++) {
+            if (temporada[i].getGolesMarcados() < peor.getGolesMarcados())
+
+                peor = temporada[i];
+        }
+        return peor;
+    }
+
+    // ---------------------------------------------------------------------
+    // EXTRAS (opcional, por si quieres pedir suma de goles)
+    // ---------------------------------------------------------------------
+
+    /**
+     * Suma total de goles marcados en la temporada.
+     */
+    public static int totalGolesMarcados(Partido[] temporada) {
+        // TODO (opcional):
+        // 1. Acumula getGolesMarcados() en un int y devuelve.
+        int total = 0;
+        for (int i = 0; i < temporada.length; i++) {
+            total += temporada[i].getGolesMarcados();
+        }
+        return total;
 
     }
 
     /**
-     * Método principal del programa. Crea un array con las temperaturas máximas
-     * de la semana y llama al método {@link #mostrarTemperaturas(int[])} para
-     * mostrar los valores en consola.
-     *
-     * @param args argumentos de línea de comandos (no utilizados en este ejemplo).
+     * Suma total de goles recibidos en la temporada.
+     */
+    public static int totalGolesRecibidos(Partido[] temporada) {
+        int total = 0;
+        for (int i = 0; i < temporada.length; i++) {
+            total += temporada[i].getGolesRecibidos();
+        }
+        return total;
+    }
+
+    // ---------------------------------------------------------------------
+    // MAIN
+    // ---------------------------------------------------------------------
+
+    /**
+     * Método principal: crea una lista de partidos de ejemplo y usa los métodos.
      */
     public static void main(String[] args) {
-        int[] temperatura = { 22, 23, 24, 24, 23, 21, 20 };
-        Resultadosatleti resultado = new Resultadosatleti();
-        resultado.mostrarTemperaturas(temperatura);
-        // 1. Declara un array de tipo int llamado maxTemperaturas que tiene 7 elementos
-        // Cada elemento se corresponde con un día de la semana: Lunes, ... Domingo
 
-        // 2. Los valores son: 22, 23, 24, 24 , 23, 21, 20
+        // 1️⃣ Ejemplo con datos fijos (puedes cambiarlos o leerlos con Scanner)
+        Partido[] temporada = {
+                new Partido("Sevilla", 3, 1),
+                new Partido("Real Sociedad", 2, 1),
+                new Partido("Valencia", 0, 0),
+                new Partido("Barcelona", 2, 3),
+                new Partido("Real Madrid", 0, 5),
+                new Partido("Rayo Vallecano", 4, 2),
+        };
 
-        // 3. Llama a la función mostrarTemperaturas
+        // 2️⃣ Llama a los métodos y muestra resultados
+        double media = mediaGolesMarcados(temporada);
+        Partido mas = partidoMasGolesMarcados(temporada);
+        Partido menos = partidoMenosGolesMarcados(temporada);
+        int marcados = totalGolesMarcados(temporada);
+        int recibidos = totalGolesRecibidos(temporada);
+
+        // // Extras:
+        // int marcados = totalGolesMarcados(temporada);
+        // int recibidos = totalGolesRecibidos(temporada);
+
+        // 3️⃣ Muestra por pantalla (quita los comentarios al implementar)
+        System.out.printf("Media de goles marcados: %.2f%n", media);
+        System.out.printf("Partido con MÁS goles marcados: %s%n", mas);
+        System.out.printf("Partido con MENOS goles marcados: %s%n", menos);
+        System.out.printf("TOTAL goles marcados: %d | TOTAL goles recibidos: %d%n", marcados, recibidos);
 
     }
 }
