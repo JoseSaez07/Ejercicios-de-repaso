@@ -1,30 +1,41 @@
-import java.util.Scanner;
-
 public class jose2 {
+    public static int[][] crearMatrices(int[][] A, int[][] B) {
+        int fila = A.length;
+        int columna = A[0].length;
+        int C[][] = new int[fila][columna];
+        for (int i = 0; i < fila; i++) {
+            for (int j = 0; j < columna; j++) {
+                if (A[i][j] > B[i][j]) {
+                    C[i][j] = A[i][j];
+                } else {
+                    C[i][j] = B[i][j];
+                }
+            }
+        }
+        return C;
+    }
+
+    public static void recibirMatriz(int[][] jose) {
+        for (int i = 0; i < jose.length; i++) {
+            for (int j = 0; j < jose[i].length; j++) {
+                System.out.print(jose[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String nombre;
-        String apellido;
-
-        while (true) {
-            System.out.print("Dime tu nombre: ");
-            nombre = sc.nextLine();
-            if (nombre.length() >= 3) {
-                break;
-            } else {
-                System.out.println("Error introuce almenos 3 letras");
-            }
-
-        }
-
-        while (true) {
-            System.out.print("Dime el nombre del apellido: ");
-            apellido = sc.nextLine();
-            if (apellido.length() >= 2) {
-                break;
-            } else {
-                System.out.println("Error introuce almenos 2 letras");
-            }
-        }
+        int[][] A = {
+                { 1, 4, 2 },
+                { 5, 2, 3 },
+                { 6, 8, 1 }
+        };
+        int[][] B = {
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 9, 1 }
+        };
+        int[][] C = crearMatrices(A, B);
+        recibirMatriz(C);
     }
 }
