@@ -11,6 +11,7 @@ class Lectura {
         dia = d;
         tMax = max;
         tMin = min;
+        
     }
 
     public String getDia() {
