@@ -37,5 +37,6 @@ public class jose2 {
         };
         int[][] C = crearMatrices(A, B);
         recibirMatriz(C);
+
     }
 }
